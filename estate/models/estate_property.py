@@ -28,3 +28,9 @@ class TestModel(models.Model):
         string = 'Garden Orientation',
         selection = [('north','North'),('south','South'), ('east','East'),('west','West')])
     active = fields.Boolean(default=True)
+    state = fields.Selection(
+        string = 'State',
+        selection = [('new','New'),('offer_received','Offer Received'), ('offer_accepted','Offer Accepted'),('sold','Sold'),('canceled','Canceled')],
+        required = True,
+        copy = False,
+        defaut = new)
