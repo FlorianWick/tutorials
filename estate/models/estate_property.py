@@ -2,7 +2,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import models,fields
 
- def _default_date_availability(self):
+def _default_date_availability(self):
         return fields.Date.context_today(self) + relativedelta(months=3)
 
 class TestModel(models.Model):
