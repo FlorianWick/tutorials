@@ -5,11 +5,11 @@ class TestModel(models.Model):
     _description = "ma première application"
     
     name = fields.Char(required=True)
-    description = fields.Text()
+    description = fields.Text(readonly=True)
     postcode = fields.Char()
-    date_availability = fields.Date()
+    date_availability = fields.Date(copy=False)
     expected_price = fields.Float(required=True)
-    selling_price = fields.Float()
+    selling_price = fields.Float(copy=False)
     bedrooms = fields.Integer()
     living_area = fields.Integer()
     facades = fields.Boolean()
