@@ -27,4 +27,4 @@ class TestModel(models.Model):
     garden_orientation = fields.Selection(
         string = 'Garden Orientation',
         selection = [('north','North'),('south','South'), ('east','East'),('west','West')])
-    active = fields.Boolean()
+    active = fields.Boolean(default=True)
