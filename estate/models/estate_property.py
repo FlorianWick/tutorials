@@ -1,7 +1,9 @@
+from dateutil.relativedelta import relativedelta
+
 from odoo import models,fields
 
-def _default_date_availability(self):
-        return 
+ def _default_date_availability(self):
+        return fields.Date.context_today(self) + relativedelta(months=3)
 
 class TestModel(models.Model):
     _name = "estate_property"
@@ -10,7 +12,7 @@ class TestModel(models.Model):
     name = fields.Char(required=True)
     description = fields.Text()
     postcode = fields.Char()
-    date_availability = fields.Date(default=fields.Date.context_today(self) + relativedelta(months=3),copy=False)
+    date_availability = fields.Date("Available From", default=lambda self: self._default_date_availability(), copy=False)
     expected_price = fields.Float(required=True)
     selling_price = fields.Float(readonly=True,copy=False)
     bedrooms = fields.Integer(default="2")
