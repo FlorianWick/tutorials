@@ -7,7 +7,7 @@ from odoo import models,fields
 class TestModel(models.Model):
     def _default_date_availability(self):
         return fields.Date.context_today(self) + relativedelta(months=3)
-        
+
     _name = "estate_property"
     _description = "ma première application"
 
@@ -26,4 +26,5 @@ class TestModel(models.Model):
     garden_area = fields.Integer    
     garden_orientation = fields.Selection(
         string = 'Garden Orientation',
-        selection = [('north','North'),('south','South'), ('east','East'),('west','West')]) 
+        selection = [('north','North'),('south','South'), ('east','East'),('west','West')])
+    active = fields.Boolean()
