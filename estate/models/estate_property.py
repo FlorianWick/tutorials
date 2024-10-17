@@ -33,4 +33,4 @@ class TestModel(models.Model):
         selection = [('new','New'),('offer_received','Offer Received'), ('offer_accepted','Offer Accepted'),('sold','Sold'),('canceled','Canceled')],
         required = True,
         copy = False,
-        defaut = "new")
+        defaut = "new",)
