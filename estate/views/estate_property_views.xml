@@ -10,7 +10,7 @@
     <!-- Vue liste pour le modèle estate.property -->
     <record id="estate_property_view" model="ir.ui.view">
         <field name="name">estate.property.tree</field>
-        <field name="model">estate.property</field>
+        <field name="model">estate_property</field>
         <field name="arch" type="xml">
             <tree string="Properties List">
                 <field name="name"/>
