@@ -37,7 +37,7 @@
                             <field name="name"/>
                         </group>
                         <group>
-                            <field name="last_seen"/>
+                            <field name="postcode"/>
                         </group>
                     </group>
                     <notebook>
