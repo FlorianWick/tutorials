@@ -14,6 +14,13 @@
         <field name="arch" type="xml">
             <tree string="Properties List">
                 <field name="name"/>
+                <field name="state" invisible="True"/>
+                <field name="postcode"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="date_availability"/>
             </tree>
         </field>
     </record>
