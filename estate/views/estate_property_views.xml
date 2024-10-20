@@ -35,6 +35,8 @@
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="expected_price"/>
+                            <field name="state"/>
                         </group>
                         <group>
                             <field name="postcode"/>
