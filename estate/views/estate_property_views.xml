@@ -34,9 +34,11 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
                             <field name="expected_price"/>
-                            <field name="state"/>
+                            
                         </group>
                         <group>
                             <field name="postcode"/>
@@ -45,6 +47,7 @@
                     <notebook>
                         <page string="Description">
                             <field name="description"/>
+                            <field name="state"/>
                         </page>
                     </notebook>
                 </sheet>
