@@ -41,7 +41,7 @@
                         <group>
                             <field name="postcode"/>
                             <field name="expected_price"/>
-                            <field name="available_from"/>
+                            <field name="date_availability"/>
                         </group>
                         <group>
                             <field name="available_from"/>
