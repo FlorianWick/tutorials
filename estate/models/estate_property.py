@@ -4,12 +4,12 @@ from odoo import models,fields
 
 
 
-class TestModel(models.Model):
+class EstateProperty(models.Model):
     def _default_date_availability(self):
         return fields.Date.context_today(self) + relativedelta(months=3)
 
     _name = "estate_property"
-    _description = "ma première application"
+    _description = "Ma première application"
 
     
     
@@ -23,7 +23,8 @@ class TestModel(models.Model):
     living_area = fields.Integer()
     facades = fields.Boolean()
     garage = fields.Boolean()
-    garden_area = fields.Integer    
+    garden = fields.Boolean()
+    garden_area = fields.Integer()    
     garden_orientation = fields.Selection(
         string = 'Garden Orientation',
         selection = [('north','North'),('south','South'), ('east','East'),('west','West')])
@@ -34,3 +35,8 @@ class TestModel(models.Model):
         required = True,
         copy = False,
         default = "new",)
+    property_type_id = fields.Many2one("estate_property_type", string="Property Type")
+    res_partner_id = fields.Many2one("res.partner", string="Buyer")
+    res_users_id = fields.Many2one("res.users", string="Salesperson", default=lambda self: self.env.user, copy=False)
+    property_tag_ids = fields.Many2many("estate_property_tag", string="Tag")
+    offer_ids = fields.One2many("estate_property_offer", "property_id", string="Offer")
