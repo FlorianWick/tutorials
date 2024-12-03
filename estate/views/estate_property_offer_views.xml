@@ -1,33 +1,37 @@
 <?xml version="1.0"?>
 <odoo>
 
+<!-- Vue form pour le modèle estate.property 
+    <record id="estate_property_offer_view_form" model="ir.ui.view">
+        <field name="name">estate.property.offer.form</field>
+        <field name="model">estate_property_offer</field>
+        <field name="arch" type="xml">
+            <form string="Property Offer">
+                <field name="price"/>
+                <field name="partner_id"/>
+                <field name="validity"/> 
+                <field name="date_deadline"/>   
+                <field name="status"/>  
+            </form>
+        </field>
+    </record>-->
 
     <!-- Vue liste pour le modèle estate.property -->
     <record id="offer" model="ir.ui.view">
         <field name="name">estate.property.offer.tree</field>
         <field name="model">estate_property_offer</field>
         <field name="arch" type="xml">
-            <list string="Properties Offer">
+            <list string="Properties Offer" editable="bottom">
                 <field name="price"/>
-                    <field name="partner_id"/> 
+                    <field name="partner_id"/>
+                    <field name="description"/>
+                    <field name="validity"/> 
+                    <field name="date_deadline"/>  
                     <field name="status"/> 
             </list>
         </field>
     </record>
 
-    <!-- Vue form pour le modèle estate.property -->
-    <record id="estate_property_offer_view_form" model="ir.ui.view">
-        <field name="name">estate.property.offer.form</field>
-        <field name="model">estate_property_offer</field>
-        <field name="arch" type="xml">
-            <form string="Property Offer">
-                <sheet>                    
-                    <field name="price"/>
-                    <field name="partner_id"/> 
-                    <field name="status"/>                                          
-                </sheet>
-            </form>
-        </field>
-    </record>
+    
 
 </odoo>
