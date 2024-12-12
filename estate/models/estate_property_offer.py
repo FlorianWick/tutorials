@@ -1,18 +1,21 @@
 from dateutil.relativedelta import relativedelta
 from datetime import datetime, timedelta
+from odoo.exceptions import ValidationError
 
 from odoo import models,fields,api
 
-import logging
-
-_logger = logging.getLogger(__name__)
 
 class EstatePropertyOffers(models.Model):
 
     _name = "estate_property_offer"
     description = fields.Char(compute="_compute_description", store=True)
     
-    
+     ###Sql contraints
+    _sql_constraints = [
+        ("check_expected_price","CHECK(price > 0)", "Merci de ne pas donner nos biens et vérifier votre offre !"),
+    ]
+
+
     price = fields.Float(required=True, string="Price")
     status = fields.Selection(
         string = 'Statut',
@@ -39,3 +42,16 @@ class EstatePropertyOffers(models.Model):
         for record in self:
             record.description = "Test for partner %s" % record.partner_id.name
             
+  ### Action
+    def action_accept_property_offer(self):
+        if "accepted" in self.mapped("property_id.offer_ids.status"):
+            raise ValidationError("Une offre a déjà été acceptée pour cette propriétée")
+        self.status = "accepted"
+        self.property_id.write ({
+            "state" : "offer_accepted",
+            "selling_price" : self.price,
+            "res_partner_id" : self.partner_id,
+        })
+    
+    def action_refuse_property_offer(self):
+        self.status = "refused"
