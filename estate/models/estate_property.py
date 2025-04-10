@@ -15,6 +15,9 @@ class EstateProperty(models.Model):
         ("check_selling_price","CHECK(selling_price >= 0)", "Merci de ne pas donner nos biens, et vérifier vos offres !"),
     ]
 
+    ##Order
+    _order = "id desc"
+    
     ##Python constraints
     @api.constrains('selling_price')
     def ninety_percent_of_expected_price(self):

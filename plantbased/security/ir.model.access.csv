@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_plantbased_plant,access.plantbased.plant,plantbased.model_plantbased_plant,base.group_user,1,1,1,1
+access_plantbased_plant_room,access.plantbased.plant.room,plantbased.model_plantbased_plant_room,base.group_user,1,1,1,1
+access_plantbased_plant_species,access.plantbased.plant.species,plantbased.model_plantbased_plant_species,base.group_user,1,1,1,1
+access_plantbased_plant_watering,access.plantbased.plant.watering,plantbased.model_plantbased_plant_watering,base.group_user,1,1,1,1

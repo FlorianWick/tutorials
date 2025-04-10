@@ -8,6 +8,7 @@ from odoo import models,fields,api
 class EstatePropertyOffers(models.Model):
 
     _name = "estate_property_offer"
+    _description = "Offres"
     description = fields.Char(compute="_compute_description", store=True)
     
      ###Sql contraints
@@ -15,6 +16,8 @@ class EstatePropertyOffers(models.Model):
         ("check_expected_price","CHECK(price > 0)", "Merci de ne pas donner nos biens et vérifier votre offre !"),
     ]
 
+    ##Order
+    _order = "price desc"
 
     price = fields.Float(required=True, string="Price")
     status = fields.Selection(
@@ -25,6 +28,7 @@ class EstatePropertyOffers(models.Model):
     validity = fields.Integer(default=7, string="Validity")
 
     date_deadline = fields.Date(compute="_compute_date_deadline", inverse="_inverse_date_deadline", string="Deadline")
+    property_type_id = fields.Many2one("estate_property_type", related="property_id.property_type_id", string="Property Type", store=True)
     
     @api.depends("create_date", "validity")
     def _compute_date_deadline(self):

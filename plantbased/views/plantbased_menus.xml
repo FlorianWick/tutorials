@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="plantbased_menu_root" name="Plant Based">
+        <menuitem id="plantbased_plant_menu_action" action="plantbased_plant_action"/>
+        <menuitem id="plantbased_watering_menu_action" action ="plantbased_watering_action"/>
+        <menuitem id="plantbased_menu_settings" name ="Paramétrage">
+            <menuitem id="plantbased_species_menu_action" action ="plantbased_species_action"/>
+            <menuitem id="plantbased_room_menu_action" action ="plantbased_room_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>

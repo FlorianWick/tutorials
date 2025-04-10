@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Action window pour afficher la liste des arrosages -->
+    <record id="plantbased_watering_action" model="ir.actions.act_window">
+        <field name="name">Arrosages</field>
+        <field name="res_model">plantbased_plant_watering</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Vue liste -->
+    <record id="plantbased_plant_watering_view_tree" model="ir.ui.view">
+        <field name="name">plantbased_plant_watering_tree</field>
+        <field name="model">plantbased_plant_watering</field>
+        <field name="arch" type="xml">
+            <list string="Arrosages">
+                <field name="date"/>
+                <field name="volume"/>
+                <field name="plant_health"/>
+                <field name="photo"/>
+            </list>
+        </field>
+    </record>    
+</odoo>

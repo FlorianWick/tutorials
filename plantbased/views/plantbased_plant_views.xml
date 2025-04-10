@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Action window pour afficher la liste des plantes -->
+    <record id="plantbased_plant_action" model="ir.actions.act_window">
+        <field name="name">Mes Plantes</field>
+        <field name="res_model">plantbased_plant</field>
+        <field name="view_mode">list,form,kanban</field>
+    </record>
+
+    <!-- Vue liste -->
+    <record id="plantbased_plant_view_tree" model="ir.ui.view">
+        <field name="name">plantbased_plant_tree</field>
+        <field name="model">plantbased_plant</field>
+        <field name="arch" type="xml">
+            <list string="Mes plantes">
+                <field name="name"/>
+                <field name="last_watering_date"/>
+                <field name="water_need_status"/>
+                <field name="species_id"/>
+                <field name="room_id"/>
+            </list>
+        </field>
+    </record>
+
+     <!-- Vue form -->
+    <record id="plantbased_plant_view_form" model="ir.ui.view">
+        <field name="name">plantbased_plant_form</field>
+        <field name="model">plantbased_plant</field>
+        <field name="arch" type="xml">
+            <form string="Ma plante">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <newline/>
+                        <group>
+                            <field name="photo" optional="show" widget="image" options="{'size': [150,150]}"/>
+                            <field name="last_watering_date"/>
+                            <field name="plant_health"/>
+                        </group>
+                        <group>
+                            <field name="species_id"/>
+                            <field name="room_id"/>
+                        </group>                        
+                    </group>
+                    <notebook>                   
+                        <page string="Arrosages">
+                            <field name="watering_ids" editable="bottom"/>                                          
+                        </page>                        
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_plant_kanban" model="ir.ui.view">
+        <field name="name">plantbased_plant_kanban</field>
+        <field name="model">plantbased_plant</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_example" default_group_by="water_need_status">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card">
+                            <!-- Image de la plante -->
+                            <div class="o_kanban_image">
+                                <img t-att-src="'/web/image/plantbased_plant/' + record.id.raw_value + '/photo'" 
+                                    alt="Image de la plante" class="img-fluid" loading="lazy"/>
+                            </div>
+                            <!-- Détails de la plante -->
+                            <div class="o_kanban_details">
+                                <div>
+                                    <strong><field name="name"/></strong>
+                                </div>
+                                <div>
+                                    <span>Dernier arrosage : </span>
+                                    <span>
+                                        <field name="last_watering_date"/>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span>État : </span>
+                                    <span>
+                                        <field name="water_need_status"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_plant_search" model="ir.ui.view">
+    <field name="name">plantbased_plant_search</field>
+    <field name="model">plantbased_plant</field>
+    <field name="arch" type="xml">
+        <search>
+            <!-- Barre de recherche libre -->
+            <field name="name" string="Nom"/>
+
+            <!-- Filtre par pièce -->
+            <filter name="room_filter" string="Pièce" domain="[]" context="{'group_by': 'room_id'}"/>
+
+            <!-- Trier par pièce -->
+            <group expand="1" string="Groupes">
+                <filter name="group_by_room" string="Grouper par pièce" context="{'group_by': 'room_id'}"/>
+            </group>
+        </search>
+    </field>
+</record>
+
+
+  
+</odoo>
